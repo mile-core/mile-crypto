@@ -9,6 +9,17 @@
 #include <iostream>
 #include <vector>
 
+
+#define GCC_VERSION (__GNUC__ * 10000 \
+                     + __GNUC_MINOR__ * 100 \
+                     + __GNUC_PATCHLEVEL__)
+
+#if !(GCC_VERSION > 70200 || __clang__)
+#define __USE_MILECSA_FIXED_POINT_IMP__ 1
+#endif
+
+extern void float2FixedPoint(float n, std::string &output, int afterpoint);
+
 #include "mile_sha3.h"
 #include "mile_types.h"
 #include "mile_base58.h"
