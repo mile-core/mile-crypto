@@ -168,6 +168,12 @@ Signer::Signer(const Signer& signer)
 {
 }
 
+Signer::Signer(const PublicKey &publicKey)
+        : m_privateKey()
+        , m_publicKey(publicKey)
+{
+}
+
 Signer::Signer(const PrivateKey &privateKey)
     : m_privateKey(privateKey)
     , m_publicKey()

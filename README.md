@@ -58,5 +58,14 @@ Basic library for cryptographic primitives in MILE
 
     std::cout << signer.VerifySignature(digest,signature) << std::endl;
     std::cout << ("2GzK7Z1gisn3iqUHDu97PnhmeRqAwK5ZpLLZRWSr4MguQCzBce" == digest.ToBase58CheckString()) << std::endl;
+    
+     
+    //
+    // verify by public key
+    // 
+    Signer    verificator(pk);
+    
+    std::cout << verificator.VerifySignature(digest,signature) << std::endl;
+
 
 ```

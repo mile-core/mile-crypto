@@ -13,6 +13,24 @@
 #include "mile_types.h"
 #include "mile_base58.h"
 
+
+#define GCC_VERSION (__GNUC__ * 10000 \
+                     + __GNUC_MINOR__ * 100 \
+                     + __GNUC_PATCHLEVEL__)
+
+#if !(GCC_VERSION > 70200 || __clang__)
+#define __USE_MILECSA_FIXED_POINT_IMP__ 1
+#endif
+
+/**
+ * Convert float to fixed point. It needs to calculate right signed digest of message contains number values.
+ *
+ * @param value
+ * @param precision
+ * @param output
+ */
+extern void float2FixedPoint(float value, int precision, std::string &output);
+
 struct Hash : public Array<eHashSize> { };
 struct Digest : public Array<eDigestSize> { };
 struct PrivateKey : public Array<ePrivateKeySize> { };
@@ -161,11 +179,18 @@ public:
     Signer(const Signer& signer);
 
     /**
-     * Create signer form private key
+     * Create signer from private key
      *
      * @param privateKey
      */
     Signer(const PrivateKey& privateKey);
+
+    /**
+     * Create verification signer
+     *
+     * @param privateKey
+     */
+    Signer(const PublicKey& publicKey);
 
     /**
      * Create Signer from keys pair
