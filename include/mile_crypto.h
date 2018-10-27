@@ -179,11 +179,18 @@ public:
     Signer(const Signer& signer);
 
     /**
-     * Create signer form private key
+     * Create signer from private key
      *
      * @param privateKey
      */
     Signer(const PrivateKey& privateKey);
+
+    /**
+     * Create verification signer
+     *
+     * @param privateKey
+     */
+    Signer(const PublicKey& publicKey);
 
     /**
      * Create Signer from keys pair
