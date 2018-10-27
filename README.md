@@ -8,8 +8,8 @@ Basic library for cryptographic primitives in MILE
 1. boost multiprecision installed includes (>=1.66, exclude 1.68!)
 
 ## Build
-    $ git clone https://github.com/mile-core/mile-csa-light
-    $ cd ./mile-csa-light; mkdir build; cd ./build
+    $ git clone https://github.com/mile-core/mile-crypto
+    $ cd ./mile-crypto; mkdir build; cd ./build
     $ cmake ..; make -j4
     $ make test
 
