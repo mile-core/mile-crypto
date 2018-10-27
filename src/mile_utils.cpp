@@ -57,7 +57,7 @@ static inline int intToStr(int x, char str[], int d)
     return i;
 }
 
-void float2FixedPoint(float n, std::string &output, int afterpoint)
+void float2FixedPoint(float value, int precision, std::string &output)
 {
     output.clear();
 
@@ -66,26 +66,26 @@ void float2FixedPoint(float n, std::string &output, int afterpoint)
     if (!res)
         return;
 #else
-    char res[(sizeof(n)+afterpoint) * 16];
+    char res[(sizeof(value)+precision) * 16];
 #endif
 
-    int ipart = (int)n;
+    int ipart = (int)value;
 
-    float fpart = n - (float)ipart;
+    float fpart = value - (float)ipart;
 
     int i = intToStr(ipart, res, 0);
 
-    if (abs(n) < 1.0) {
+    if (abs(value) < 1.0) {
         output = "0";
     }
 
-    if (afterpoint != 0)
+    if (precision != 0)
     {
         res[i] = '.';
 
-        fpart = fpart * pow(10, afterpoint);
+        fpart = fpart * pow(10, precision);
 
-        intToStr((int)fpart, res + i + 1, afterpoint);
+        intToStr((int)fpart, res + i + 1, precision);
     }
 
     output += res;

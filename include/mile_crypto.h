@@ -9,6 +9,10 @@
 #include <iostream>
 #include <vector>
 
+#include "mile_sha3.h"
+#include "mile_types.h"
+#include "mile_base58.h"
+
 
 #define GCC_VERSION (__GNUC__ * 10000 \
                      + __GNUC_MINOR__ * 100 \
@@ -18,11 +22,14 @@
 #define __USE_MILECSA_FIXED_POINT_IMP__ 1
 #endif
 
-extern void float2FixedPoint(float n, std::string &output, int afterpoint);
-
-#include "mile_sha3.h"
-#include "mile_types.h"
-#include "mile_base58.h"
+/**
+ * Convert float to fixed point. It needs to calculate right signed digest of message contains number values.
+ *
+ * @param value
+ * @param precision
+ * @param output
+ */
+extern void float2FixedPoint(float value, int precision, std::string &output);
 
 struct Hash : public Array<eHashSize> { };
 struct Digest : public Array<eDigestSize> { };
