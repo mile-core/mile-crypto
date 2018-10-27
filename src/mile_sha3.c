@@ -20,7 +20,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
-#include "sha3.h"
+#include "mile_sha3.h"
 
 #define SHA3_ASSERT( x )
 #if defined(_MSC_VER)
