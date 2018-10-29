@@ -62,7 +62,7 @@ void float2FixedPoint(float value, int precision, std::string &output)
     output.clear();
 
 #if __USE_MILECSA_FIXED_POINT_IMP__
-    char *res = (char *)malloc((sizeof(n)+afterpoint) * 16);
+    char *res = (char *)malloc((sizeof(value)+precision) * 16);
     if (!res)
         return;
 #else
