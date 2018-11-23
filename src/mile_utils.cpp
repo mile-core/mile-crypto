@@ -83,7 +83,7 @@ void float2FixedPoint(float value, int precision, std::string &output)
     {
         res[i] = '.';
 
-        fpart = fpart * pow(10, precision);
+        fpart = round(fpart * pow(10, precision+1))/10.0f;
 
         intToStr((int)fpart, res + i + 1, precision);
     }
